@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10527447292E448000FAB232 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10527446292E448000FAB232 /* CustomCell.swift */; };
+		10527449292E49E800FAB232 /* GameLevelEasy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10527448292E49E800FAB232 /* GameLevelEasy.swift */; };
 		333E97952927EB770031AA16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E97942927EB770031AA16 /* AppDelegate.swift */; };
 		333E97972927EB770031AA16 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E97962927EB770031AA16 /* SceneDelegate.swift */; };
 		333E97992927EB770031AA16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E97982927EB770031AA16 /* ViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10527446292E448000FAB232 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		10527448292E49E800FAB232 /* GameLevelEasy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLevelEasy.swift; sourceTree = "<group>"; };
 		333E97912927EB770031AA16 /* MemoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		333E97942927EB770031AA16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		333E97962927EB770031AA16 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +71,7 @@
 				333E97982927EB770031AA16 /* ViewController.swift */,
 				333E97AA2927FDBA0031AA16 /* view */,
 				333E979A2927EB770031AA16 /* Main.storyboard */,
+				10527446292E448000FAB232 /* CustomCell.swift */,
 				333E979D2927EB790031AA16 /* Assets.xcassets */,
 				333E979F2927EB790031AA16 /* LaunchScreen.storyboard */,
 				333E97A22927EB790031AA16 /* Info.plist */,
@@ -78,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				333E97A82927FC110031AA16 /* EasyModeController.swift */,
+				10527448292E49E800FAB232 /* GameLevelEasy.swift */,
 				333E97AB2927FDD80031AA16 /* MediumModeController.swift */,
 				333E97AD2927FDE20031AA16 /* HardModeController.swift */,
 			);
@@ -157,9 +163,11 @@
 			files = (
 				333E97AC2927FDD80031AA16 /* MediumModeController.swift in Sources */,
 				333E97A92927FC110031AA16 /* EasyModeController.swift in Sources */,
+				10527449292E49E800FAB232 /* GameLevelEasy.swift in Sources */,
 				333E97992927EB770031AA16 /* ViewController.swift in Sources */,
 				333E97952927EB770031AA16 /* AppDelegate.swift in Sources */,
 				333E97972927EB770031AA16 /* SceneDelegate.swift in Sources */,
+				10527447292E448000FAB232 /* CustomCell.swift in Sources */,
 				333E97AE2927FDE20031AA16 /* HardModeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
