@@ -18,6 +18,8 @@
 		333E97A92927FC110031AA16 /* EasyModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E97A82927FC110031AA16 /* EasyModeController.swift */; };
 		333E97AC2927FDD80031AA16 /* MediumModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E97AB2927FDD80031AA16 /* MediumModeController.swift */; };
 		333E97AE2927FDE20031AA16 /* HardModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E97AD2927FDE20031AA16 /* HardModeController.swift */; };
+		334623FC29314497009651A9 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 334623FB29314497009651A9 /* AlertView.xib */; };
+		334623FE29314BED009651A9 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334623FD29314BED009651A9 /* AlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		333E97A82927FC110031AA16 /* EasyModeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyModeController.swift; sourceTree = "<group>"; };
 		333E97AB2927FDD80031AA16 /* MediumModeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumModeController.swift; sourceTree = "<group>"; };
 		333E97AD2927FDE20031AA16 /* HardModeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardModeController.swift; sourceTree = "<group>"; };
+		334623FB29314497009651A9 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		334623FD29314BED009651A9 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 				10527446292E448000FAB232 /* CustomCell.swift */,
 				333E979D2927EB790031AA16 /* Assets.xcassets */,
 				333E979F2927EB790031AA16 /* LaunchScreen.storyboard */,
+				334623FB29314497009651A9 /* AlertView.xib */,
+				334623FD29314BED009651A9 /* AlertView.swift */,
 				333E97A22927EB790031AA16 /* Info.plist */,
 			);
 			path = MemoryGame;
@@ -149,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				333E97A12927EB790031AA16 /* LaunchScreen.storyboard in Resources */,
+				334623FC29314497009651A9 /* AlertView.xib in Resources */,
 				333E979E2927EB790031AA16 /* Assets.xcassets in Resources */,
 				333E979C2927EB770031AA16 /* Main.storyboard in Resources */,
 			);
@@ -163,6 +170,7 @@
 			files = (
 				333E97AC2927FDD80031AA16 /* MediumModeController.swift in Sources */,
 				333E97A92927FC110031AA16 /* EasyModeController.swift in Sources */,
+				334623FE29314BED009651A9 /* AlertView.swift in Sources */,
 				10527449292E49E800FAB232 /* GameLevelEasy.swift in Sources */,
 				333E97992927EB770031AA16 /* ViewController.swift in Sources */,
 				333E97952927EB770031AA16 /* AppDelegate.swift in Sources */,

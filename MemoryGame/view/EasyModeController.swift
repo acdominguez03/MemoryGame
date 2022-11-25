@@ -13,15 +13,16 @@ class EasyModeController: UIViewController{
     
     @IBOutlet weak var randomImage: UIImageView!
     
-    private let images = [#imageLiteral(resourceName: "delfin"), #imageLiteral(resourceName: "julian"), #imageLiteral(resourceName: "juanlu"), #imageLiteral(resourceName: "daniel")]
-    private var finalImages:[UIImage] = []
+    private let images = ["delfin", "daniel", "julian", "juanlu"]
+    private var finalImages:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         randomImage.layer.cornerRadius = 20
         
+        
         let randomNumber = Int.random(in: 0...3)
-        self.randomImage.image = self.images[randomNumber]
+        self.randomImage.image = UIImage(named: self.images[randomNumber])
         self.finalImages.append(self.images[randomNumber])
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -30,7 +31,7 @@ class EasyModeController: UIViewController{
                               duration: 0.5,
                               options: .transitionCrossDissolve,
                               animations: {
-                self.randomImage.image = self.images[randomNumber]
+                self.randomImage.image = UIImage(named: self.images[randomNumber])
             }, completion: nil)
             self.finalImages.append(self.images[randomNumber])
         }
@@ -41,7 +42,7 @@ class EasyModeController: UIViewController{
                               duration: 0.5,
                               options: .transitionCrossDissolve,
                               animations: {
-                self.randomImage.image = self.images[randomNumber]
+                self.randomImage.image = UIImage(named: self.images[randomNumber])
             }, completion: nil)
             self.finalImages.append(self.images[randomNumber])
         }
@@ -52,7 +53,7 @@ class EasyModeController: UIViewController{
                               duration: 0.5,
                               options: .transitionCrossDissolve,
                               animations: {
-                self.randomImage.image = self.images[randomNumber]
+                self.randomImage.image = UIImage(named: self.images[randomNumber])
             }, completion: nil)
             self.finalImages.append(self.images[randomNumber])
         }
@@ -60,6 +61,7 @@ class EasyModeController: UIViewController{
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FinishLevelEasy") as? GameLevelEasy
             vc?.images = self.finalImages
+            vc?.correctValues = self.finalImages
             self.navigationController?.pushViewController(vc!, animated: true)
         }
         

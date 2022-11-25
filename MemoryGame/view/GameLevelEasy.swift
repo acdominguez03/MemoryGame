@@ -10,28 +10,26 @@ import UIKit
 
 class GameLevelEasy: UIViewController{
     
-    var images: [UIImage] = []
-    var imagesToCheck = [UIImage]()
+    var images: [String] = []
+    var correctValues = [String]()
     
     @IBOutlet weak var collectionView1: UICollectionView!
-    @IBOutlet weak var collectionView2: UICollectionView!
+
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: true)
         images.shuffle()
-        
-        //Add drag and drop configuration to the collection views
+            
+        //CollectionView-1 drag and drop configuration
         self.collectionView1.dragInteractionEnabled = true
         self.collectionView1.dragDelegate = self
         self.collectionView1.dropDelegate = self
+        self.collectionView1.reorderingCadence = .fast
         
-        self.collectionView2.dragInteractionEnabled = true
-        self.collectionView2.dropDelegate = self
-        self.collectionView2.dragDelegate = self
-        self.collectionView2.reorderingCadence = .fast
     }
     
-    //Function to move a cell from source indexPath to destination IndexPath within the same collection view, in conclusion, reorder the items of a collection when a change happens
     private func reorderItems(coordinator: UICollectionViewDropCoordinator, destinationIndexPath: IndexPath, collectionView: UICollectionView)
     {
         let items = coordinator.items
@@ -43,15 +41,10 @@ class GameLevelEasy: UIViewController{
                 dIndexPath.row = collectionView.numberOfItems(inSection: 0) - 1
             }
             collectionView.performBatchUpdates({
-                if collectionView === self.collectionView2
-                {
-                    self.imagesToCheck.remove(at: sourceIndexPath.row)
-                    self.imagesToCheck.insert(item.dragItem.localObject as! UIImage, at: dIndexPath.row)
-                }
-                else
+                if collectionView === self.collectionView1
                 {
                     self.images.remove(at: sourceIndexPath.row)
-                    self.images.insert(item.dragItem.localObject as! UIImage, at: dIndexPath.row)
+                    self.images.insert(item.dragItem.localObject as! String, at: dIndexPath.row)
                 }
                 collectionView.deleteItems(at: [sourceIndexPath])
                 collectionView.insertItems(at: [dIndexPath])
@@ -60,26 +53,24 @@ class GameLevelEasy: UIViewController{
         }
     }
     
-    //This method copy a element from source indexPath in 1st collection to destination indexPath in 2nd collection
-    private func copyItems(coordinator: UICollectionViewDropCoordinator, destinationIndexPath: IndexPath, collectionView: UICollectionView)
-    {
-        collectionView.performBatchUpdates({
-            var indexPaths = [IndexPath]()
-            for (index, item) in coordinator.items.enumerated()
-            {
-                let indexPath = IndexPath(row: destinationIndexPath.row + index, section: destinationIndexPath.section)
-                if collectionView === self.collectionView2
-                {
-                    self.imagesToCheck.insert(item.dragItem.localObject as! UIImage, at: indexPath.row)
-                }
-                else
-                {
-                    self.images.insert(item.dragItem.localObject as! UIImage, at: indexPath.row)
-                }
-                indexPaths.append(indexPath)
-            }
-            collectionView.insertItems(at: indexPaths)
-        })
+    private func showAlert(title: String, message: String, condition: String){
+        if(condition == "win"){
+            AlertView.instance.showAlert(title: title, message: message, alertType: .win)
+        }else{
+            AlertView.instance.showAlert(title: title, message: message, alertType: .lose)
+        }
+        
+    }
+    
+    @IBAction func checkOrder(_ sender: Any) {
+        if(images[0] == correctValues[0]
+        && images[1] == correctValues[1]
+        && images[2] == correctValues[2]
+           && images[3] == correctValues[3]){
+            showAlert(title: "You win", message: "Congratulations you guess all the images", condition: "win")
+        }else{
+            showAlert(title: "You lose", message: "Sorry you are so bad", condition: "lose")
+        }
     }
 }
 
@@ -87,29 +78,15 @@ extension GameLevelEasy : UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return collectionView == self.collectionView1 ? self.images.count : self.imagesToCheck.count
+        return self.images.count
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        if collectionView == self.collectionView1
-        {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
-            
-            cell.teacherPhoto.image = self.images[indexPath.row]
-            cell.teacherPhoto.layer.cornerRadius = 20
-            
-            return cell
-        }
-        else
-        {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath) as! CustomCell
-            
-            cell.teacherPhoto.image = self.imagesToCheck[indexPath.row]
-            cell.teacherPhoto.layer.cornerRadius = 20
-            
-            return cell
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
+        cell.teacherPhoto.image = UIImage(named: self.images[indexPath.row])
+        cell.teacherPhoto.layer.cornerRadius = 20
+        return cell
     }
 }
 
@@ -117,8 +94,8 @@ extension GameLevelEasy : UICollectionViewDragDelegate
 {
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]
     {
-        let item = collectionView == collectionView1 ? self.images[indexPath.row] : self.imagesToCheck[indexPath.row]
-        let itemProvider = NSItemProvider(object: item as UIImage)
+        let item = self.images[indexPath.row]
+        let itemProvider = NSItemProvider(object: item as NSString)
         let dragItem = UIDragItem(itemProvider: itemProvider)
         dragItem.localObject = item
         return [dragItem]
@@ -126,8 +103,8 @@ extension GameLevelEasy : UICollectionViewDragDelegate
     
     func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem]
     {
-        let item = collectionView == collectionView1 ? self.images[indexPath.row] : self.imagesToCheck[indexPath.row]
-        let itemProvider = NSItemProvider(object: item as UIImage)
+        let item = self.images[indexPath.row]
+        let itemProvider = NSItemProvider(object: item as NSString)
         let dragItem = UIDragItem(itemProvider: itemProvider)
         dragItem.localObject = item
         return [dragItem]
@@ -149,7 +126,7 @@ extension GameLevelEasy : UICollectionViewDropDelegate
 {
     func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool
     {
-        return session.canLoadObjects(ofClass: UIImage.self)
+        return session.canLoadObjects(ofClass: NSString.self)
     }
     
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal
@@ -200,11 +177,10 @@ extension GameLevelEasy : UICollectionViewDropDelegate
             break
             
         case .copy:
-            self.copyItems(coordinator: coordinator, destinationIndexPath: destinationIndexPath, collectionView: collectionView)
+            break
             
         default:
             return
         }
     }
 }
-
