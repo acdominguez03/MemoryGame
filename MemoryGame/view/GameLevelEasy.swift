@@ -62,12 +62,12 @@ class GameLevelEasy: UIViewController{
             }
             if let level = UserDefaults.standard.string(forKey: "Level")
             {
-                if level == "easy", let totalPunctuation = UserDefaults.standard.integer(forKey: "Punctuation") as Int? {
-                    UserDefaults.standard.set(totalPunctuation + 50, forKey: "Punctuation")
-                } else if level == "medium", let totalPunctuation = UserDefaults.standard.integer(forKey: "Punctuation") as Int? {
-                    UserDefaults.standard.set(totalPunctuation + 100, forKey: "Punctuation")
-                } else if level == "hard", let totalPunctuation = UserDefaults.standard.integer(forKey: "Punctuation") as Int? {
-                    UserDefaults.standard.set(totalPunctuation + 200, forKey: "Punctuation")
+                if level == "easy", let totalPunctuation = UserDefaults.standard.integer(forKey: "Score") as Int? {
+                    UserDefaults.standard.set(totalPunctuation + 50, forKey: "Score")
+                } else if level == "medium", let totalPunctuation = UserDefaults.standard.integer(forKey: "Score") as Int? {
+                    UserDefaults.standard.set(totalPunctuation + 100, forKey: "Score")
+                } else if level == "hard", let totalPunctuation = UserDefaults.standard.integer(forKey: "Score") as Int? {
+                    UserDefaults.standard.set(totalPunctuation + 200, forKey: "Score")
                 }
             }
         }else{
@@ -77,10 +77,10 @@ class GameLevelEasy: UIViewController{
             }
             if let level = UserDefaults.standard.string(forKey: "Level")
             {
-                if level == "easy", let totalPunctuation = UserDefaults.standard.integer(forKey: "Punctuation") as Int? {
-                    UserDefaults.standard.set(totalPunctuation - 200, forKey: "Punctuation")
-                } else if level == "medium", let totalPunctuation = UserDefaults.standard.integer(forKey: "Punctuation") as Int? {
-                    UserDefaults.standard.set(totalPunctuation - 10, forKey: "Punctuation")
+                if level == "easy", let totalPunctuation = UserDefaults.standard.integer(forKey: "Score") as Int? {
+                    UserDefaults.standard.set(totalPunctuation - 200, forKey: "Score")
+                } else if level == "medium", let totalPunctuation = UserDefaults.standard.integer(forKey: "Score") as Int? {
+                    UserDefaults.standard.set(totalPunctuation - 10, forKey: "Score")
                 }
             }
         }

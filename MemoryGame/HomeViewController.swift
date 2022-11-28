@@ -15,15 +15,15 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.setHidesBackButton(true, animated: true)
         
-        if let totalPunctuation = UserDefaults.standard.integer(forKey: "Punctuation") as Int?
+        if let totalScore = UserDefaults.standard.integer(forKey: "Score") as Int?
         {
-            punctuation.text = "Punctuation : \(totalPunctuation)"
+            score.text = "Score : \(totalScore)"
         }else{
-            UserDefaults.standard.set(0, forKey: "Punctuation")
+            UserDefaults.standard.set(0, forKey: "Score")
         }
     }
     
-    @IBOutlet weak var punctuation: UILabel!
+    @IBOutlet weak var score: UILabel!
     
     @IBAction func easy(_ sender: Any) {
         UserDefaults.standard.set("easy", forKey: "Level")
