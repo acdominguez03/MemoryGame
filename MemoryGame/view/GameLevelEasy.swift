@@ -15,7 +15,6 @@ class GameLevelEasy: UIViewController{
     
     @IBOutlet weak var collectionView1: UICollectionView!
     
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -56,18 +55,33 @@ class GameLevelEasy: UIViewController{
     
     
     @IBAction func checkOrder(_ sender: Any) {
-        if(images[0] == correctValues[0]
-           && images[1] == correctValues[1]
-           && images[2] == correctValues[2]
-           && images[3] == correctValues[3]){
+        if(images == correctValues){
             SCLAlertView().showSuccess("You win", subTitle: "Congratulations you guess all the images").setDismissBlock {
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Main") as? ViewController
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Main") as? HomeViewController
                 self.navigationController?.pushViewController(vc!, animated: true)
+            }
+            if let level = UserDefaults.standard.string(forKey: "Level")
+            {
+                if level == "easy", let totalPunctuation = UserDefaults.standard.integer(forKey: "Punctuation") as Int? {
+                    UserDefaults.standard.set(totalPunctuation + 50, forKey: "Punctuation")
+                } else if level == "medium", let totalPunctuation = UserDefaults.standard.integer(forKey: "Punctuation") as Int? {
+                    UserDefaults.standard.set(totalPunctuation + 100, forKey: "Punctuation")
+                } else if level == "hard", let totalPunctuation = UserDefaults.standard.integer(forKey: "Punctuation") as Int? {
+                    UserDefaults.standard.set(totalPunctuation + 200, forKey: "Punctuation")
+                }
             }
         }else{
             SCLAlertView().showError("You lose", subTitle: "Sorry you are so bad").setDismissBlock {
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Main") as? ViewController
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Main") as? HomeViewController
                 self.navigationController?.pushViewController(vc!, animated: true)
+            }
+            if let level = UserDefaults.standard.string(forKey: "Level")
+            {
+                if level == "easy", let totalPunctuation = UserDefaults.standard.integer(forKey: "Punctuation") as Int? {
+                    UserDefaults.standard.set(totalPunctuation - 200, forKey: "Punctuation")
+                } else if level == "medium", let totalPunctuation = UserDefaults.standard.integer(forKey: "Punctuation") as Int? {
+                    UserDefaults.standard.set(totalPunctuation - 10, forKey: "Punctuation")
+                }
             }
         }
     }

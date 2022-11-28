@@ -12,7 +12,7 @@ class EasyModeController: UIViewController{
     
     @IBOutlet weak var randomImage: UIImageView!
     
-    private let images:[UIImage] = [#imageLiteral(resourceName: "daniel"), #imageLiteral(resourceName: "julian"), #imageLiteral(resourceName: "delfin"), #imageLiteral(resourceName: "juanlu"), #imageLiteral(resourceName: "david"), #imageLiteral(resourceName: "jessica"), #imageLiteral(resourceName: "eva"), #imageLiteral(resourceName: "fol"),]
+    private let images:[UIImage] = [#imageLiteral(resourceName: "daniel"), #imageLiteral(resourceName: "julian"), #imageLiteral(resourceName: "delfin"), #imageLiteral(resourceName: "juanlu"), #imageLiteral(resourceName: "david"), #imageLiteral(resourceName: "jessica"), #imageLiteral(resourceName: "eva"), #imageLiteral(resourceName: "fol")]
     private var finalImages:[UIImage] = []
     
     override func viewDidLoad() {
@@ -20,53 +20,69 @@ class EasyModeController: UIViewController{
         randomImage.layer.cornerRadius = 20
         
         
+        
+        
         let randomNumber = self.getRandonImage(images: self.images)
         self.randomImage.image = self.images[randomNumber]
         self.finalImages.append(self.images[randomNumber])
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let randomNumber = self.getRandonImage(images: self.images)
-            UIView.transition(with: self.randomImage,
-                              duration: 0.5,
-                              options: .transitionCrossDissolve,
-                              animations: {
-                self.randomImage.image = self.images[randomNumber]
-            }, completion: nil)
-            self.finalImages.append(self.images[randomNumber])
-        }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            let randomNumber = self.getRandonImage(images: self.images)
-            UIView.transition(with: self.randomImage,
-                              duration: 0.5,
-                              options: .transitionCrossDissolve,
-                              animations: {
-                self.randomImage.image = self.images[randomNumber]
-            }, completion: nil)
-            self.finalImages.append(self.images[randomNumber])
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-            let randomNumber = self.getRandonImage(images: self.images)
-            UIView.transition(with: self.randomImage,
-                              duration: 0.5,
-                              options: .transitionCrossDissolve,
-                              animations: {
-                self.randomImage.image = self.images[randomNumber]
-            }, completion: nil)
-            self.finalImages.append(self.images[randomNumber])
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FinishLevelEasy") as? GameLevelEasy
-            vc?.images = self.finalImages
-            vc?.correctValues = self.finalImages
-            self.navigationController?.pushViewController(vc!, animated: true)
+        if let level = UserDefaults.standard.string(forKey: "Level")
+        {
+            if level == "easy" {
+                changeImage(time: 0.5)
+                changeImage(time: 1.25)
+                changeImage(time: 2)
+                
+                navigateToFinal(time: 2.5)
+            } else if level == "medium" {
+                changeImage(time: 0.5)
+                changeImage(time: 1)
+                changeImage(time: 1.5)
+                changeImage(time: 2)
+                changeImage(time: 2.5)
+                
+                navigateToFinal(time: 3)
+            } else if level == "hard" {
+                changeImage(time: 0.4)
+                changeImage(time: 0.8)
+                changeImage(time: 1.2)
+                changeImage(time: 1.6)
+                changeImage(time: 2)
+                changeImage(time: 2.4)
+                changeImage(time: 2.8)
+                
+                navigateToFinal(time: 3.2)
+            }
         }
          
+    }
+    
+    private func changeImage(time: TimeInterval){
+        DispatchQueue.main.asyncAfter(deadline: .now() + time) {
+            let randomNumber = self.getRandonImage(images: self.images)
+            UIView.transition(with: self.randomImage,
+                              duration: 0.25,
+                              options: .transitionCurlUp,
+                              animations: {
+                self.randomImage.image = self.images[randomNumber]
+            }, completion: nil)
+            self.finalImages.append(self.images[randomNumber])
+        }
     }
     
     private func getRandonImage(images: [UIImage]) -> Int{
         return Int.random(in: 0...images.count - 1)
     }
+    
+    private func navigateToFinal(time: TimeInterval){
+        DispatchQueue.main.asyncAfter(deadline: .now() + time) {
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FinishLevelEasy") as? GameLevelEasy
+            vc?.images = self.finalImages
+            vc?.correctValues = self.finalImages
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+    }
+    
+
 }
