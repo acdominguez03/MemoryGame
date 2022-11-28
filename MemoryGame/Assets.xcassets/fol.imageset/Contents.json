@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "remove.png",
+      "filename" : "fol.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "remove-1.png",
+      "filename" : "fol 1.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "remove-2.png",
+      "filename" : "fol 2.jpeg",
       "idiom" : "universal",
       "scale" : "3x"
     }

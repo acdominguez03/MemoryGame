@@ -6,22 +6,22 @@
 //
 
 import UIKit
-
+import SCLAlertView
 
 class GameLevelEasy: UIViewController{
     
-    var images: [String] = []
-    var correctValues = [String]()
+    var images: [UIImage] = []
+    var correctValues = [UIImage]()
     
     @IBOutlet weak var collectionView1: UICollectionView!
-
+    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
         images.shuffle()
-            
+        
         //CollectionView-1 drag and drop configuration
         self.collectionView1.dragInteractionEnabled = true
         self.collectionView1.dragDelegate = self
@@ -44,7 +44,7 @@ class GameLevelEasy: UIViewController{
                 if collectionView === self.collectionView1
                 {
                     self.images.remove(at: sourceIndexPath.row)
-                    self.images.insert(item.dragItem.localObject as! String, at: dIndexPath.row)
+                    self.images.insert(item.dragItem.localObject as! UIImage, at: dIndexPath.row)
                 }
                 collectionView.deleteItems(at: [sourceIndexPath])
                 collectionView.insertItems(at: [dIndexPath])
@@ -53,23 +53,22 @@ class GameLevelEasy: UIViewController{
         }
     }
     
-    private func showAlert(title: String, message: String, condition: String){
-        if(condition == "win"){
-            AlertView.instance.showAlert(title: title, message: message, alertType: .win)
-        }else{
-            AlertView.instance.showAlert(title: title, message: message, alertType: .lose)
-        }
-        
-    }
+    
     
     @IBAction func checkOrder(_ sender: Any) {
         if(images[0] == correctValues[0]
-        && images[1] == correctValues[1]
-        && images[2] == correctValues[2]
+           && images[1] == correctValues[1]
+           && images[2] == correctValues[2]
            && images[3] == correctValues[3]){
-            showAlert(title: "You win", message: "Congratulations you guess all the images", condition: "win")
+            SCLAlertView().showSuccess("You win", subTitle: "Congratulations you guess all the images").setDismissBlock {
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Main") as? ViewController
+                self.navigationController?.pushViewController(vc!, animated: true)
+            }
         }else{
-            showAlert(title: "You lose", message: "Sorry you are so bad", condition: "lose")
+            SCLAlertView().showError("You lose", subTitle: "Sorry you are so bad").setDismissBlock {
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Main") as? ViewController
+                self.navigationController?.pushViewController(vc!, animated: true)
+            }
         }
     }
 }
@@ -84,7 +83,7 @@ extension GameLevelEasy : UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
-        cell.teacherPhoto.image = UIImage(named: self.images[indexPath.row])
+        cell.teacherPhoto.image = images[indexPath.row]
         cell.teacherPhoto.layer.cornerRadius = 20
         return cell
     }
@@ -95,7 +94,7 @@ extension GameLevelEasy : UICollectionViewDragDelegate
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]
     {
         let item = self.images[indexPath.row]
-        let itemProvider = NSItemProvider(object: item as NSString)
+        let itemProvider = NSItemProvider(object: item as UIImage)
         let dragItem = UIDragItem(itemProvider: itemProvider)
         dragItem.localObject = item
         return [dragItem]
@@ -104,7 +103,7 @@ extension GameLevelEasy : UICollectionViewDragDelegate
     func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem]
     {
         let item = self.images[indexPath.row]
-        let itemProvider = NSItemProvider(object: item as NSString)
+        let itemProvider = NSItemProvider(object: item as UIImage)
         let dragItem = UIDragItem(itemProvider: itemProvider)
         dragItem.localObject = item
         return [dragItem]
@@ -126,7 +125,7 @@ extension GameLevelEasy : UICollectionViewDropDelegate
 {
     func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool
     {
-        return session.canLoadObjects(ofClass: NSString.self)
+        return session.canLoadObjects(ofClass: UIImage.self)
     }
     
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal
