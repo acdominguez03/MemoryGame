@@ -12,7 +12,7 @@ class ImagesViewController: UIViewController{
     
     @IBOutlet weak var randomImage: UIImageView!
     
-    private let images:[UIImage] = [#imageLiteral(resourceName: "daniel"), #imageLiteral(resourceName: "julian"), #imageLiteral(resourceName: "delfin"), #imageLiteral(resourceName: "juanlu"), #imageLiteral(resourceName: "david"), #imageLiteral(resourceName: "jessica"), #imageLiteral(resourceName: "eva"), #imageLiteral(resourceName: "fol")]
+    private let images:[UIImage] = [#imageLiteral(resourceName: "daniel"), #imageLiteral(resourceName: "julian"), #imageLiteral(resourceName: "delfin"), #imageLiteral(resourceName: "juanlu"), #imageLiteral(resourceName: "david"), #imageLiteral(resourceName: "jessica"), #imageLiteral(resourceName: "eva"), #imageLiteral(resourceName: "fol"), #imageLiteral(resourceName: "rinconada")]
     private var finalImages:[UIImage] = []
     
     override func viewDidLoad() {
