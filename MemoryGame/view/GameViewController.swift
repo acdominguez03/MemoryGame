@@ -8,7 +8,7 @@
 import UIKit
 import SCLAlertView
 
-class GameLevelEasy: UIViewController{
+class GameViewController: UIViewController{
     
     var images: [UIImage] = []
     var correctValues = [UIImage]()
@@ -87,7 +87,7 @@ class GameLevelEasy: UIViewController{
     }
 }
 
-extension GameLevelEasy : UICollectionViewDataSource
+extension GameViewController : UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
@@ -103,7 +103,7 @@ extension GameLevelEasy : UICollectionViewDataSource
     }
 }
 
-extension GameLevelEasy : UICollectionViewDragDelegate
+extension GameViewController : UICollectionViewDragDelegate
 {
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]
     {
@@ -135,7 +135,7 @@ extension GameLevelEasy : UICollectionViewDragDelegate
     }
 }
 
-extension GameLevelEasy : UICollectionViewDropDelegate
+extension GameViewController : UICollectionViewDropDelegate
 {
     func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool
     {

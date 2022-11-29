@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class EasyModeController: UIViewController{
+class ImagesViewController: UIViewController{
     
     @IBOutlet weak var randomImage: UIImageView!
     
@@ -18,9 +18,6 @@ class EasyModeController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         randomImage.layer.cornerRadius = 20
-        
-        
-        
         
         let randomNumber = self.getRandonImage(images: self.images)
         self.randomImage.image = self.images[randomNumber]
@@ -77,7 +74,7 @@ class EasyModeController: UIViewController{
     
     private func navigateToFinal(time: TimeInterval){
         DispatchQueue.main.asyncAfter(deadline: .now() + time) {
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FinishLevelEasy") as? GameLevelEasy
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FinishLevelEasy") as? GameViewController
             vc?.images = self.finalImages
             vc?.correctValues = self.finalImages
             self.navigationController?.pushViewController(vc!, animated: true)
