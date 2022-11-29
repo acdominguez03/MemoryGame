@@ -388,6 +388,15 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="4EM-Z6-xih"/>
+                                <exclude reference="5t3-yq-lVQ"/>
+                                <exclude reference="6Vs-9A-kBS"/>
+                                <exclude reference="7bY-62-t2s"/>
+                                <exclude reference="97u-fS-WPH"/>
+                                <exclude reference="G4X-vD-dEK"/>
+                                <exclude reference="PgO-gs-r47"/>
+                                <exclude reference="Qbf-dc-0mh"/>
+                                <exclude reference="jTj-Qa-X7B"/>
                                 <exclude reference="2JM-sl-CaV"/>
                                 <exclude reference="2LU-HD-9Tx"/>
                                 <exclude reference="31Y-DF-nqw"/>
@@ -400,15 +409,6 @@
                                 <exclude reference="oH1-1i-FhZ"/>
                                 <exclude reference="uuz-fj-9jW"/>
                                 <exclude reference="v7Y-VK-piw"/>
-                                <exclude reference="4EM-Z6-xih"/>
-                                <exclude reference="5t3-yq-lVQ"/>
-                                <exclude reference="6Vs-9A-kBS"/>
-                                <exclude reference="7bY-62-t2s"/>
-                                <exclude reference="97u-fS-WPH"/>
-                                <exclude reference="G4X-vD-dEK"/>
-                                <exclude reference="PgO-gs-r47"/>
-                                <exclude reference="Qbf-dc-0mh"/>
-                                <exclude reference="jTj-Qa-X7B"/>
                                 <exclude reference="1SN-DF-glX"/>
                                 <exclude reference="8Te-nR-V6c"/>
                                 <exclude reference="MFb-TV-gmD"/>
@@ -431,13 +431,13 @@
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
                             <mask key="constraints">
+                                <include reference="5t3-yq-lVQ"/>
+                                <include reference="7bY-62-t2s"/>
+                                <include reference="97u-fS-WPH"/>
                                 <include reference="2JM-sl-CaV"/>
                                 <include reference="fkA-n3-4jJ"/>
                                 <include reference="uuz-fj-9jW"/>
                                 <include reference="v7Y-VK-piw"/>
-                                <include reference="5t3-yq-lVQ"/>
-                                <include reference="7bY-62-t2s"/>
-                                <include reference="97u-fS-WPH"/>
                                 <include reference="MFb-TV-gmD"/>
                                 <include reference="e5p-5m-x9S"/>
                                 <include reference="HMc-IV-RXl"/>
@@ -448,13 +448,13 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
+                                <include reference="4EM-Z6-xih"/>
+                                <include reference="6Vs-9A-kBS"/>
+                                <include reference="Qbf-dc-0mh"/>
                                 <include reference="2LU-HD-9Tx"/>
                                 <include reference="6qr-H9-D0d"/>
                                 <include reference="e4A-Hy-Ehw"/>
                                 <include reference="oH1-1i-FhZ"/>
-                                <include reference="4EM-Z6-xih"/>
-                                <include reference="6Vs-9A-kBS"/>
-                                <include reference="Qbf-dc-0mh"/>
                                 <include reference="1SN-DF-glX"/>
                                 <include reference="8Te-nR-V6c"/>
                                 <include reference="RZg-7P-raG"/>
@@ -465,13 +465,13 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
+                                <include reference="G4X-vD-dEK"/>
+                                <include reference="PgO-gs-r47"/>
+                                <include reference="jTj-Qa-X7B"/>
                                 <include reference="31Y-DF-nqw"/>
                                 <include reference="chb-Iy-CZj"/>
                                 <include reference="gjS-eW-xkA"/>
                                 <include reference="gvo-8a-aK3"/>
-                                <include reference="G4X-vD-dEK"/>
-                                <include reference="PgO-gs-r47"/>
-                                <include reference="jTj-Qa-X7B"/>
                                 <include reference="fwa-jm-8uF"/>
                                 <include reference="oDS-Ba-OGB"/>
                                 <include reference="XDY-Iv-SDS"/>
@@ -542,7 +542,7 @@
                                     <constraint firstAttribute="height" constant="50" id="DZy-fs-ul8"/>
                                     <constraint firstAttribute="height" constant="100" id="GfS-tg-SFp"/>
                                     <constraint firstAttribute="height" constant="50" id="M5u-po-kyD"/>
-                                    <constraint firstAttribute="width" constant="150" id="y4w-Rl-K91"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="y4w-Rl-K91"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="zWb-br-Udd"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemTealColor"/>
@@ -588,7 +588,7 @@
                                     <constraint firstAttribute="height" constant="100" id="K0V-uj-wIE"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="s8R-Wj-lyd"/>
                                     <constraint firstAttribute="height" constant="50" id="vKG-OH-ipa"/>
-                                    <constraint firstAttribute="width" constant="150" id="y0e-iU-kvG"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="y0e-iU-kvG"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemTealColor"/>
                                 <state key="normal" title="Button"/>
@@ -636,8 +636,8 @@
                                 <rect key="frame" x="132" y="529" width="150" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="0PL-ph-Bbp"/>
-                                    <constraint firstAttribute="width" constant="150" id="4US-x4-HE1"/>
-                                    <constraint firstAttribute="width" constant="150" id="4VZ-b4-Sda"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="4US-x4-HE1"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="4VZ-b4-Sda"/>
                                     <constraint firstAttribute="height" constant="50" id="aKV-no-fcJ"/>
                                     <constraint firstAttribute="height" constant="50" id="zBA-gQ-U9f"/>
                                 </constraints>
